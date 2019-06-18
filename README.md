@@ -1,2 +1,2 @@
-## data_analytics_class_assignments
+## Alt-Data_Analytics_Class_Assignments
 Data analytics class assignments and scratch work
