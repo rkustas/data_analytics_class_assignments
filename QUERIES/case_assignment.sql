@@ -23,7 +23,20 @@ select starttime,
 from da_pronto.trip
 where
 	cast(starttime as date) = '2015-07-01'
-limit 10
+limit 100
+
+select starttime,
+	from_station_name,
+	to_station_name,
+	tripduration,
+	case
+		when from_station_name = to_station_name then '1'
+		Else '0'
+		end as stations_match
+from da_pronto.trip
+where
+	cast(starttime as date) = '2015-07-01'
+limit 100
 
 select *
 from public.airline_on_time_west_coast
@@ -34,7 +47,7 @@ select flight_date,
 	avg(arrival_delay) as avg_arrival_delay
 from public.airline_on_time_west_coast
 where
-	flight_date > '2014-12-01' and flight_date < '2015-01-01'
+	flight_date >= '2014-12-01' and flight_date <= '2015-01-01'
 group by flight_date,carrier
 limit 100
 
@@ -49,7 +62,7 @@ select flight_date,
 			end
 from public.airline_on_time_west_coast
 where
-	flight_date > '2014-12-01' and flight_date < '2015-01-01'
+	flight_date >= '2014-12-01' and flight_date <= '2015-01-01'
 group by flight_date,carrier,origin_city_name
 limit 100
 
